@@ -1,3 +1,112 @@
+@font-face {
+    font-family: 'Super Mellow';
+    src: url('./fonts/Super Mellow.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --color-grey-green: #72817c;
+    --color-yellow: #fde46b;
+    --color-background: #f8f9f8;
+    --color-text: #2a2f2d;
+    --color-border: #d4dad7;
+    --font-heading: 'Manrope', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(2deg) scaleY(1.03);
+    }
+
+    50% {
+        transform: rotate(-2deg) scaleY(0.97);
+    }
+
+    75% {
+        transform: rotate(1deg) scaleY(1.03);
+    }
+
+    100% {
+        transform: rotate(0deg) scaleY(1);
+    }
+}
+
+.wobble-hover:hover {
+    animation: wobble 0.4s ease-in-out;
+}
+
+.glow-hover {
+    transition: all 0.3s ease;
+}
+
+    .glow-hover:hover {
+        box-shadow:
+            0 0 20px rgba(220, 254, 251, 0.5),
+            0 0 40px rgba(220, 254, 251, 0.3),
+            0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-8px) translateX(3px) rotate(0.5deg);
+    }
+
+    66% {
+        transform: translateY(4px) translateX(-3px) rotate(-0.5deg);
+    }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out both;
+}

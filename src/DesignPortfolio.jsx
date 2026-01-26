@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import pluginImageThumb from './assets/Filthy404ScreenShotThumb.jpg';
+import pluginImageThumb from './assets/Filthy404ScreenshotThumb.jpg';
 import beerAdThumb from './assets/beerAdThumb.jpg'
 import ProjectDetail from './ProjectDetail';
 import ContactForm from './ContactForm';

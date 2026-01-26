@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import pluginImage from './assets/Filthy404ScreenShot.jpg';
+import pluginImage from './assets/Filthy404Screenshot.jpg';
 
 // Project Detail Component
 // This shows the full case study for a selected project

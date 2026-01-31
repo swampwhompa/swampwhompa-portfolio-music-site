@@ -46,9 +46,34 @@ body {
         transform: rotate(0deg) scaleY(1);
     }
 }
+@keyframes wobbleMus {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(1deg) scaleY(1.02);
+    }
+
+    50% {
+        transform: rotate(-1deg) scaleY(0.98);
+    }
+
+    75% {
+        transform: rotate(0.5deg) scaleY(1.02);
+    }
+
+    100% {
+        transform: rotate(0deg) scaleY(1);
+    }
+}
 
 .wobble-hover:hover {
     animation: wobble 0.4s ease-in-out;
+}
+
+.wobbleMus-hover:hover {
+    animation: wobbleMus 0.3s ease-in-out;
 }
 
 .glow-hover {
@@ -62,27 +87,39 @@ body {
             0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
+.glow-on-group-hover {
+  transition: all 0.3s ease;
+}
+
+    .group:hover .glow-on-group-hover {
+        box-shadow: 
+         0 0 20px rgba(220, 254, 251, 0.5),
+         0 0 40px rgba(220, 254, 251, 0.3),
+         0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-    }
-
-    33% {
-        transform: translateY(-8px) translateX(3px) rotate(0.5deg);
-    }
-
-    66% {
-        transform: translateY(4px) translateX(-3px) rotate(-0.5deg);
-    }
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    /* We multiply the base movement by our intensity variable */
+    transform: 
+      translateY(calc(-8px * var(--intensity, 1))) 
+      translateX(calc(3px * var(--intensity, 1))) 
+      rotate(calc(0.5deg * var(--intensity, 1)));
+  }
+  66% {
+    transform: 
+      translateY(calc(4px * var(--intensity, 1))) 
+      translateX(calc(-3px * var(--intensity, 1))) 
+      rotate(calc(-0.5deg * var(--intensity, 1)));
+  }
 }
 
 .float-animation {
-    animation: float 6s ease-in-out infinite;
-}
-
-.float-animation-delayed {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: -3s;
+  --intensity: 1; /* Normal strength */
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes fadeIn {

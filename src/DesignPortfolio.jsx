@@ -3,31 +3,14 @@ import pluginImageThumb from './assets/Filthy404ScreenshotThumb.jpg';
 import beerAdThumb from './assets/beerAdThumb.jpg'
 import ProjectDetail from './ProjectDetail';
 import ContactForm from './ContactForm';
+import { projects } from './portfolioData';
 
 
 // Design Portfolio Component
 function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
   // This is an array of objects - a common data structure for lists of similar items
   // Each object has properties (title, description, category)
-  const projects = [
-    { 
-      id: '404-delay',
-      title: "Filthy 404 Delay", 
-      description: "Audio plugin recreating the iconic glitchy delay from the SP-404SX", 
-      category: "Audio Development",
-      tags: ["C++", "JUCE", "DSP", "Plugin Development"],
-      image: pluginImageThumb
-    },
-    { 
-      id: 'heavyseas-ad',
-      title: "Heavy Sees Beer Ad", 
-      description: "Animated ad for the Heavy Seas Beer Company", 
-      category: "Animation",
-      tags: ["Heavy Seas", "Advertising", "Animation"],
-      image: beerAdThumb
-    },
-  ];
-  
+    
   return (
     <div className="relative z-10 min-h-screen p-8">
       {/* Back button */}
@@ -63,7 +46,7 @@ function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
             }}
           >
             {/* Thumbnail placeholder - replace with actual images */}
-            <div className="glow-hover w-full md:w-64 h-48 rounded-lg overflow-hidden flex-shrink-0">
+            <div className="glow-on-group-hover w-full md:w-64 h-48 rounded-lg overflow-hidden flex-shrink-0">
                 <img 
                     src={project.image} 
                     alt={project.title}
@@ -112,9 +95,10 @@ function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
             Work With Me
           </h2>
           <div className="space-y-4 font-body text-white/90 text-lg mb-8">
-            <p><strong className="text-white">Audio Plugin Development:</strong> Custom VST/AU plugins from concept to release</p>
+            <p><strong className="text-white">Audio Production:</strong> Custom Music / Soundtracks / Intros </p>
+            <p><strong className="text-white">Video Production:</strong> Custom Motion Graphics / Location Video / Editing </p>
             <p><strong className="text-white">Web Design & Development:</strong> Modern, responsive sites built with React</p>
-            <p><strong className="text-white">Hourly Rate:</strong> $150/hour</p>
+            <p><strong className="text-white">Hourly Rate:</strong> $75/hour</p>
           </div>
           <button 
               onClick={() => setCurrentPage('contact')}

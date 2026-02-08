@@ -52,9 +52,12 @@ function HomePage({ setCurrentPage }) {
   return (
     <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
       <div className="max-w-6xl w-full">
-        <h1 className="drop-shadow-lg text-6xl font-heading font-bold text-white text-center mb-32 ml-9 tracking-wide">
-                Dennis Cornell <span className="mx-12"> ⬡ </span> SwampWhompa
-        </h1>
+        <h1 className="drop-shadow-lg text-4xl md:text-6xl font-heading font-bold text-white text-center mb-16 md:mb-32 tracking-wide">
+        <span className="block md:inline">Dennis Cornell</span>
+        <span className="hidden md:inline mx-12"> ⬡ </span>
+        <span className="block md:hidden my-2">⬡</span>
+        <span className="block md:inline">SwampWhompa</span>
+      </h1>
         
         <div className="grid md:grid-cols-2 gap-16">
           

@@ -32,6 +32,7 @@ function ShaderBackground() {
     
     // Set renderer size to fill the window
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     renderer.domElement.style.display = 'block';
@@ -221,12 +222,19 @@ function ShaderBackground() {
     // --- HANDLE WINDOW RESIZE ---
     
     const handleResize = () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.domElement.style.width = '100%';
-      renderer.domElement.style.height = '100%';
-      material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
-
-    };
+     const width = window.innerWidth;
+     const height = window.innerHeight;
+    
+     renderer.setSize(width, height);
+     renderer.setPixelRatio(window.devicePixelRatio);
+     renderer.domElement.style.width = '100%';
+     renderer.domElement.style.height = '100%';
+    
+     material.uniforms.iResolution.value.set(width, height);
+    
+     // Force immediate render
+     renderer.render(scene, camera);
+   };
     
     // Listen for window resize events
     window.addEventListener('resize', handleResize);

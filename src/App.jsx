@@ -145,6 +145,26 @@ function MusicPage({ setCurrentPage }) {
           Recent tracks & releases
         </p>
       </div>
+
+      {/* Bio section */}
+      <div className="max-w-6xl mx-auto mb-16">
+        <h2 className="font-heading text-4xl font-bold text-white mb-8 drop-shadow-lg">
+          Bio
+        </h2>
+      <div className="max-w-6xl mx-auto mb-26">
+        <div className="glass-button p-8 animate-fadeIn">
+          <p className="font-body text-xl text-white leading-relaxed mb-4 drop-shadow-lg">
+            SwampWhompa is Baltimore musician  Dennis Cornell's long-time solo electronic music endeavor. What started as explorations in instrumental hip-hop, IDM and video game-inspired jams has bloomed over the last few years into a grimy, yet club-forward powerhouse, inspired by the cornucopia that is the UK Bass music scene.
+          </p>
+          <p className="font-body text-xl text-white leading-relaxed mb-4 drop-shadow-lg">
+            SwampWhompa is nothing without its mascot - Harold, or simply 'the Whompa'. He's a cute yeti-like creature that swings between virtuous and mischievous. SwampWhompa's music videos and assorted media give us an increasingly defined view into the character as he finds himself in ever more chaotic scenarios. Cornell animates these videos himself, further defining his glitchy, analog flavored aesthetic and plans on adding to the universe with further releases.
+          </p>
+          <p className="font-body text-xl text-white leading-relaxed drop-shadow-lg">
+            SwampWhompa is currently slated to perform his first festival show this summer at the Neon Waves festival in St. Mary's County, MD. He plans to follow the show with more releases, more remixes and as always - more Whompa.
+          </p>
+          </div>
+        </div>
+      </div>
       
       {/* Originals Section */}
       <div className="max-w-6xl mx-auto mb-16">

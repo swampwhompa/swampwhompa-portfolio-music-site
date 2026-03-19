@@ -70,25 +70,28 @@ function ProjectDetail({ setCurrentPage, projectId }) {
         >
 
         {/* Video embed - full width for 16:9 */}
-        <div 
-          className="animate-fadeInUp glass-button p-4 rounded-2xl mb-8"
-          style={{ animationDelay: '0.2s' }}
-        >
-          <div className={
-            `rounded-lg overflow-hidden ${project.id === '404-delay' ? 'aspect-[9/16]' : 'aspect-video'}`}
+        {project.detailPage.videoId && (
+          <div 
+            className="animate-fadeInUp glass-button p-4 rounded-2xl"
+            style={{ animationDelay: '0.2s' }}
           >
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${project.detailPage.videoId}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            />
+            <div 
+              className="rounded-lg overflow-hidden"
+              style={{ aspectRatio: project.detailPage.videoAspect || '16/9' }}
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${project.detailPage.videoId}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
       {/* Conditional rendering based on project type */}
       {project.detailPage.image && (
@@ -107,6 +110,35 @@ function ProjectDetail({ setCurrentPage, projectId }) {
         </div>
       )}
       </div>
+
+      {project.detailPage.liveVisualsGif && (
+      <div 
+        className="glass-button p-4 rounded-2xl mb-8 animate-fadeInUp"
+        style={{ animationDelay: '0.35s' }}
+      >
+        <h3 className="font-heading text-2xl font-bold text-white mb-4 drop-shadow-lg">
+          Live Show Visuals
+        </h3>
+        <img 
+          src={project.detailPage.liveVisualsGif}
+          alt="Live visuals"
+          className="w-full rounded-lg"
+        />
+      </div>
+    )}
+
+      {project.detailPage.productGif && (
+    <div 
+      className="glass-button p-4 rounded-2xl mb-8 animate-fadeInUp"
+      style={{ animationDelay: '0.35s' }}
+    >
+      <img 
+        src={project.detailPage.productGif}
+        alt={`${project.title} animation`}
+        className="w-full rounded-lg"
+      />
+    </div>
+  )}
       
       {project.detailPage.btsImages && (
         // BTS grid (for Heavy Seas)

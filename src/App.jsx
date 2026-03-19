@@ -7,6 +7,7 @@ import ShaderBackground from './ShaderBackground';
 import DesignPortfolio from './DesignPortfolio';
 import ProjectDetail from './ProjectDetail';
 import ContactForm from './ContactForm';
+import SocialButtons from './SocialButtons';
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <ShaderBackground />
+       <SocialButtons />
       
       {currentPage === 'home' && <HomePage setCurrentPage={setCurrentPage} />}
       {currentPage === 'design' && (

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
-function ContactForm({ setCurrentPage }) {
+function ContactForm() {
+    const navigate = useNavigate();
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [description, setDescription] = React.useState('');
@@ -122,7 +124,7 @@ function ContactForm({ setCurrentPage }) {
                     I'll get back to you soon to discuss your project further.
                   </p>
                   <button
-                    onClick={() => setCurrentPage('design')}
+                    onClick={() => navigate('/design')}
                     className="px-8 py-4 bg-yellow text-text font-body font-bold rounded-lg hover:bg-yellow/90 transition-colors"
                   >
                     Back to Portfolio

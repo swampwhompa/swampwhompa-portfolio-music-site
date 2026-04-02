@@ -9,6 +9,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
     --color-grey-green: #72817c;
     --color-yellow: #fde46b;
@@ -22,7 +24,7 @@
 body {
     font-family: var(--font-body);
     color: var(--color-text);
-    background-color: var(--color-background);
+    background-color: #72817c; /* match your shader's approximate grey-green color */
 }
 
 body, html {
@@ -31,6 +33,8 @@ body, html {
   padding: 0;
   width: 100%;
 }
+
+
 
 @keyframes wobble {
     0% {
@@ -153,4 +157,8 @@ body, html {
 
 .animate-fadeIn {
     animation: fadeIn 0.8s ease-out both;
+
+    
+
 }
+

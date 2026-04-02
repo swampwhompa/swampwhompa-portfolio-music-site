@@ -1,9 +1,12 @@
 ﻿import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { projects } from './portfolioData';
 
 // Project Detail Component
 // This shows the full case study for a selected project
-function ProjectDetail({ setCurrentPage, projectId }) {
+function ProjectDetail() {  
+   const navigate = useNavigate();
+   const { projectId } = useParams();  // Gets projectId from URL
   
   // Get the current project data
   const project = projects.find(p => p.id === projectId);
@@ -15,7 +18,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
         <div className="text-center">
           <h1 className="font-heading text-4xl font-bold text-white mb-4 drop-shadow-lg">Project Not Found</h1>
           <button 
-            onClick={() => setCurrentPage('design')}
+            onClick={() => navigate('/design')}
             className="font-body text-yellow hover:text-white transition-colors"
           >
             ← Back to Portfolio
@@ -29,7 +32,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
     <div className="relative z-10 min-h-screen p-8">
       {/* Back button */}
       <button 
-        onClick={() => setCurrentPage('design')}
+        onClick={() => navigate('/design')}
         className="mb-8 px-6 py-3 font-body text-white/80 hover:text-white transition-colors flex items-center gap-2 animate-fadeIn"
       >
         <span>←</span> Back to Portfolio
@@ -72,19 +75,28 @@ function ProjectDetail({ setCurrentPage, projectId }) {
         {/* Video embed - full width for 16:9 */}
         {project.detailPage.videoId && (
           <div 
-            className="animate-fadeInUp glass-button p-4 rounded-2xl"
-            style={{ animationDelay: '0.2s' }}
+            style={{ 
+              animationDelay: '0.2s',
+              '--intensity': 0,
+              animation: `fadeInUp 0.6s ease-out 0.2s both, float 6s ease-in-out infinite`
+            }}
+            className="p-4 rounded-2xl"
           >
             <div 
-              className="rounded-lg overflow-hidden"
-              style={{ aspectRatio: project.detailPage.videoAspect || '16/9' }}
+              className="rounded-lg overflow-hidden bg-black"
+              style={{ 
+                aspectRatio: project.detailPage.videoAspect || '16/9',
+                transform: 'translateZ(0)',   // ← force own GPU layer
+                willChange: 'transform',      // ← prevent repaint cascade
+                isolation: 'isolate'          // ← own stacking context
+              }}
             >
               <iframe
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${project.detailPage.videoId}`}
                 title="YouTube video player"
-                frameBorder="0"
+                
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
@@ -97,7 +109,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
       {project.detailPage.image && (
         // Plugin screenshot (for 404 Delay)
         <div 
-          className="animate-fadeInUp glass-button p-4 rounded-2xl"
+          className="animate-fadeInUp p-4 rounded-2xl"
           style={{ animationDelay: '0.3s' }}
         >
           <div className="aspect-[9/16] overflow-hidden rounded-lg">
@@ -113,7 +125,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
 
       {project.detailPage.liveVisualsGif && (
       <div 
-        className="glass-button p-4 rounded-2xl mb-8 animate-fadeInUp"
+        className=" p-4 rounded-2xl mb-8 animate-fadeInUp"
         style={{ animationDelay: '0.35s' }}
       >
         <h3 className="font-heading text-2xl font-bold text-white mb-4 drop-shadow-lg">
@@ -129,7 +141,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
 
       {project.detailPage.productGif && (
     <div 
-      className="glass-button p-4 rounded-2xl mb-8 animate-fadeInUp"
+      className=" p-4 rounded-2xl mb-8 animate-fadeInUp"
       style={{ animationDelay: '0.35s' }}
     >
       <img 
@@ -147,7 +159,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
           style={{ animationDelay: '0.3s' }}
         >
           {project.detailPage.btsImages.map((img, i) => (
-            <div key={i} className="glass-button p-4 rounded-2xl">
+            <div key={i} className=" p-4 rounded-2xl">
               <img 
                 src={img}
                 alt={`Behind the scenes ${i + 1}`}
@@ -173,7 +185,7 @@ function ProjectDetail({ setCurrentPage, projectId }) {
         {project.detailPage.technical.map((section, index) => (
           <div 
             key={index}
-            className="glass-button p-8 animate-fadeInUp"
+            className=" p-8 animate-fadeInUp"
             style={{ animationDelay: `${0.5 + index * 0.1}s` }}
           >
             <h3 className="font-heading text-2xl font-bold text-white mb-4 drop-shadow-lg">

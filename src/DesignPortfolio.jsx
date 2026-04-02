@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import pluginImageThumb from './assets/Filthy404ScreenshotThumb.jpg';
 import beerAdThumb from './assets/beerAdThumb.jpg'
 import ProjectDetail from './ProjectDetail';
@@ -7,7 +8,8 @@ import { projects } from './portfolioData';
 
 
 // Design Portfolio Component
-function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
+function DesignPortfolio() {
+    const navigate = useNavigate();
   // This is an array of objects - a common data structure for lists of similar items
   // Each object has properties (title, description, category)
     
@@ -15,7 +17,7 @@ function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
     <div className="relative z-10 min-h-screen p-8">
       {/* Back button */}
       <button 
-        onClick={() => setCurrentPage('home')}
+        onClick={() => navigate('/')}
         className="mb-8 px-6 py-3 font-body text-white/80 hover:text-white transition-colors flex items-center gap-2"
       >
         <span>←</span> Back
@@ -37,10 +39,10 @@ function DesignPortfolio({ setCurrentPage, setCurrentProject }) {
           <div
             key={project.id}
             onClick={() => {
-              setCurrentPage('project-detail');
-              setCurrentProject(project.id);
+              navigate(`/design/${project.id}`);
+              
             }}
-            className="glass-button group cursor-pointer p-8 flex flex-col md:flex-row gap-6 hover:scale-[1.02] transition-all duration-300"
+            className="group cursor-pointer p-8 flex flex-col md:flex-row gap-6 hover:scale-[1.02] transition-all duration-300"
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.15}s both`
             }}

@@ -1,4 +1,4 @@
-﻿import React, { useRef, useEffect } from 'react';
+﻿﻿import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
 // This component creates a fullscreen WebGL shader background
@@ -173,13 +173,14 @@ function ShaderBackground() {
           float scanline = sin(fragCoord.y * 0.8);
           col *= 0.98 + 0.02 * scanline;
           
-          float noise = hash12(uv * iTime * 100.0);
-          col += (noise - 0.5) * 0.05;
-          
+         
           vec3 edges = fwidth(col);
           col += edges * 1.0;
           
           col = mix(col, smoothstep(0.0, 1.0, col), 0.3);
+
+                    float noise = hash12(uv * iTime * 100.0);
+          col += (noise - 0.5) * 0.05;
           
           // In Three.js we use gl_FragColor instead of fragColor
           gl_FragColor = vec4(col, 1.0);
@@ -205,19 +206,14 @@ function ShaderBackground() {
     const clock = new THREE.Clock();
     
     // animate() runs every frame (60fps)
+    let animationId;
     const animate = () => {
-      // Schedule next frame
-      requestAnimationFrame(animate);
-      
-      // Update iTime uniform with elapsed seconds
-      material.uniforms.iTime.value = clock.getElapsedTime();
-      
-      // Render the scene from the camera's perspective
+      material.uniforms.iTime.value += 0.01;
       renderer.render(scene, camera);
+      animationId = requestAnimationFrame(animate);
     };
-    
-    // Start the animation loop
     animate();
+
     
     // --- HANDLE WINDOW RESIZE ---
     

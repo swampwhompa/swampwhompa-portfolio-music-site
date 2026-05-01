@@ -79,9 +79,9 @@ function ShaderBackground() {
         const float GLITCH_OFFSET = 0.09;
         
         // Colors
-        const vec3 c_base  = vec3(0.6, 0.63, 0.63);
-        const vec3 c_light = c_base * 1.09;
-        const vec3 c_dark  = c_base * 0.90;
+        const vec3 c_base  = vec3(0.15, 0.16, 0.17);
+        const vec3 c_light = c_base * 1.2;
+        const vec3 c_dark  = c_base * 0.8;
         
         float hash12(vec2 p) {
           vec3 p3  = fract(vec3(p.xyx) * .1031);

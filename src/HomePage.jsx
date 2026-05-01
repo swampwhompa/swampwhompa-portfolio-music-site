@@ -1,86 +1,118 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import whompaGif from './assets/whompafloat.gif';
-import whompaPng from './assets/whompafloat.png';
-import beerGif from './assets/beerad.gif';
-import beerPng from './assets/beerad.png';
+import DesignThumb from './assets/DesignThumb.mp4';
+import MusicThumb from './assets/MusicThumb.mp4';
 
 function HomePage() {
-  // State to track which card is being hovered
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = React.useState(null);
   
-  // Preload GIFs on component mount
+  const designVideoRef = React.useRef(null);
+  const musicVideoRef = React.useRef(null);
+
   React.useEffect(() => {
-    const img1 = new Image();
-    img1.src = beerGif;
-    const img2 = new Image();
-    img2.src = whompaGif;
+    // Set videos to pause on first frame when component mounts
+    if (designVideoRef.current) {
+      designVideoRef.current.currentTime = 0;
+      designVideoRef.current.pause();
+    }
+    if (musicVideoRef.current) {
+      musicVideoRef.current.currentTime = 0;
+      musicVideoRef.current.pause();
+    }
   }, []);
+
+  const handleMouseEnter = (card) => {
+    setHoveredCard(card);
+    if (card === 'design' && designVideoRef.current) {
+      designVideoRef.current.play();
+    } else if (card === 'music' && musicVideoRef.current) {
+      musicVideoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+    if (designVideoRef.current) {
+      designVideoRef.current.pause();
+      designVideoRef.current.currentTime = 0;
+    }
+    if (musicVideoRef.current) {
+      musicVideoRef.current.pause();
+      musicVideoRef.current.currentTime = 0;
+    }
+  };
 
   return (
     <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
-      <div className="max-w-6xl w-full">
-        <h1 className="drop-shadow-lg text-4xl md:text-6xl font-heading font-bold text-white text-center mb-16 md:mb-32 tracking-wide">
-        <span className="block md:inline">Dennis Cornell</span>
-        <span className="hidden md:inline mx-12"> ⬡ </span>
-        <span className="block md:hidden my-2">⬡</span>
-        <span className="block md:inline">SwampWhompa</span>
-      </h1>
+      <div className="max-w-4xl w-full space-y-8">
         
-        <div className="grid md:grid-cols-2 gap-16">
-          
-          {/* Design Portfolio Card */}
-          <div 
+        {/* Visuals Card - Top */}
+        <div 
           onClick={() => navigate('/design')}
-          onMouseEnter={() => setHoveredCard('design')}
-          onMouseLeave={() => setHoveredCard(null)}
-          className="float-animation glow-hover wobble-hover group relative overflow-hidden rounded-2xl cursor-pointer  bg-white/10 shadow-xl transition-all duration-300"
+          onMouseEnter={() => handleMouseEnter('design')}
+          onMouseLeave={handleMouseLeave}
+          className="relative overflow-hidden cursor-pointer transition-all duration-300 rounded-2xl"
+          style={{
+            aspectRatio: '16/9',
+            filter: hoveredCard === 'design' ? 'none' : 'saturate(15%) brightness(0.7)'
+          }}
         >
-          <div 
-            className="aspect-square flex items-center justify-center transition-all duration-300"
-            style={{ 
-              backgroundImage: `url(${hoveredCard === 'design' ? beerGif : beerPng})`,
-              backgroundSize: '182%',
-              backgroundPosition: 'center'
-            }}
-          >
-            <div className="absolute inset-0 bg-background/30 group-hover:bg-background/0 transition-all duration-300" />
-            <div className="relative text-center p-8 z-10">
-              <h2 className="font-heading text-4xl font-bold text-white mb-2 drop-shadow-lg">Design</h2>
-              <p className="font-body text-white drop-shadow-md">Portfolio & Services</p>
+          <video
+            ref={designVideoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            src={DesignThumb}
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-black/40 transition-opacity duration-300" 
+               style={{ opacity: hoveredCard === 'design' ? 0 : 0.6 }} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center p-8 z-10">
+              <h2 className="font-sans text-4xl font-bold text-white mb-2 drop-shadow-lg tracking-tight">Visuals</h2>
+              <p className="font-sans text-lg text-white drop-shadow-md font-light">Portfolio & Services</p>
             </div>
           </div>
         </div>
 
-          
-          {/* Music Card */}
-          <div 
-              onClick={() => navigate('/music')}
-              onMouseEnter={() => setHoveredCard('music')}
-              onMouseLeave={() => setHoveredCard(null)}
-              className="float-animation glow-hover wobble-hover group relative overflow-hidden rounded-2xl cursor-pointer bg-white/10 shadow-xl transition-all duration-300"
-            >
-              <div 
-                className="aspect-square flex items-center justify-center transition-all duration-300"
-                style={{ 
-                  backgroundImage: `url(${hoveredCard === 'music' ? whompaGif : whompaPng})`,
-                  backgroundSize: '120%',
-                  backgroundPosition: 'calc(50% - 20px) 20%'
-                }}
-              >
-                <div className="absolute inset-0 bg-background/30 group-hover:bg-background/0 transition-all duration-300" />
-                <div className="relative text-center p-8 z-10">
-                  <h2 className="font-heading text-4xl font-bold text-white mb-2 drop-shadow-lg">Music</h2>
-                  <p className="font-body text-white drop-shadow-md">Originals, Remixes & Visuals</p>
-                </div>
-              </div>
+        {/* Clean Separator */}
+        <div className="relative h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+        {/* Music Card - Bottom */}
+        <div 
+          onClick={() => navigate('/music')}
+          onMouseEnter={() => handleMouseEnter('music')}
+          onMouseLeave={handleMouseLeave}
+          className="relative overflow-hidden cursor-pointer transition-all duration-300 rounded-2xl"
+          style={{
+            aspectRatio: '16/9',
+            filter: hoveredCard === 'music' ? 'none' : 'saturate(15%) brightness(0.7)'
+          }}
+        >
+          <video
+            ref={musicVideoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ transform: 'scale(1.2) translate(4%, 5%)' }}
+            src={MusicThumb}
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-black/40 transition-opacity duration-300" 
+               style={{ opacity: hoveredCard === 'music' ? 0 : 0.6 }} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center p-8 z-10">
+              <h2 className="font-sans text-4xl font-bold text-white mb-2 drop-shadow-lg tracking-tight">Music</h2>
+              <p className="font-sans text-lg text-white drop-shadow-md font-light">Originals, Remixes & Visuals</p>
             </div>
-         </div>  
+          </div>
+        </div>
+        
       </div>  
     </div>  
   );
 }
 
-export default HomePage 
+export default HomePage

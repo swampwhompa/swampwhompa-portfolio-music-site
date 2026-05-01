@@ -46,8 +46,8 @@ function ProjectDetail() {
           </span>
         </div>
         
-        <h1 className="font-heading text-6xl md:text-7xl font-bold text-white mb-6 tracking-wide drop-shadow-lg">
-          {project.detailPage.title}
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg text-center" style={{ fontFamily: "'Akira Expanded', sans-serif", fontWeight: 900 }}>
+          {project.title}
         </h1>
         
         <div className="flex flex-wrap gap-3 mb-8">
@@ -65,6 +65,40 @@ function ProjectDetail() {
           {project.detailPage.overview}
         </p>
       </div>
+      
+      {/* Looping videos */}
+      {project.detailPage.loopingVideos && (
+        <div className="mb-16 max-w-5xl mx-auto">
+          <h2 className="font-heading text-2xl font-bold text-white mb-6 animate-fadeInUp drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
+            SwampWhompa Live Visuals
+          </h2>
+          <div className="space-y-6">
+            {project.detailPage.loopingVideos.map((video, index) => (
+              <div 
+                key={index}
+                className="animate-fadeInUp"
+                style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+              >
+                <div 
+                  className="rounded-lg overflow-hidden bg-black"
+                  style={{ 
+                    aspectRatio: '16/9'
+                  }}
+                >
+                  <video
+                    src={video.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full rounded-lg"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       
       {/* Main content grid */}
       <div className="max-w-5xl mx-auto mb-16">
@@ -102,6 +136,46 @@ function ProjectDetail() {
                 className="w-full h-full"
               />
             </div>
+          </div>
+        )}
+
+        {/* Additional videos */}
+        {project.detailPage.additionalVideos && (
+          <div className="space-y-8">
+            {project.detailPage.additionalVideos.map((video, index) => (
+              <div 
+                key={video.id}
+                style={{ 
+                  animationDelay: `${0.3 + index * 0.1}s`,
+                  '--intensity': 0,
+                  animation: `fadeInUp 0.6s ease-out ${0.3 + index * 0.1}s both, float 6s ease-in-out infinite`
+                }}
+                className="p-4 rounded-2xl"
+              >
+                <h3 className="font-heading text-2xl font-bold text-white mb-4 drop-shadow-lg">
+                  {video.title}
+                </h3>
+                <div 
+                  className="rounded-lg overflow-hidden bg-black"
+                  style={{ 
+                    aspectRatio: '16/9',
+                    transform: 'translateZ(0)',
+                    willChange: 'transform',
+                    isolation: 'isolate'
+                  }}
+                >
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         )}
 

@@ -1,24 +1,16 @@
 import allswellThumb from './assets/allswell-thumb.png'; // You'll need a thumbnail
 import allswellGif from './assets/allswell-visuals.gif';
+import whompafloat from './assets/whompafloat.png';
+import DesignThumb from './assets/DesignThumb.mp4';
+import MusicThumb from './assets/MusicThumb.mp4';
 
 import pluginImage from './assets/Filthy404Screenshot.jpg';
 
 import pluginImageThumb from './assets/Filthy404ScreenshotThumb.jpg';
-import beerAdThumb from './assets/beerAdThumb.jpg';
-
-import heavySeasBTS1 from './assets/BeerAdBTS1.png';
-import heavySeasBTS2 from './assets/BeerAdBTS2.png';
-import heavySeasBTS3 from './assets/BeerAdBTS3.png';
-import heavySeasBTS4 from './assets/BeerAdBTS4.png';
-
-import tsaoGif from './assets/tsao-gif.gif';
-import tsaoThumb from './assets/tsao-thumb.png';
 
 // Portfolio projects array
 // Each object represents one project with all its data
 export const projects = [
-
-    
   {
     id: 'allswell-visuals',
     title: "Allswell - Visual Content",
@@ -47,10 +39,6 @@ export const projects = [
           content: "Directed and produced the full music video, combining live performance footage with motion tracked composite shots. The visual approach emphasizes texture and atmosphere, using practical lighting techniques and post-processing to create a harsh quality that complements the band's introspective songwriting."
         },
         {
-          heading: "Live Show Visuals",
-          content: "Created a looping visual of the band's logo over a grim, abandoned house backdrop. Processed and color-graded footage to look like hazy, worn film. All assets modeled, textured and composited in Blender"
-        },
-        {
           heading: "'For the Dream' - Lyric Video",
           content: "Developed animated backgrounds for 'For the Dream' lyric video. Created 3D assets, camera motion, dust fx and indoor environments to match the EP's floral album art."
         }
@@ -65,7 +53,58 @@ export const projects = [
       ]
     }
   }
-  ,
+,
+  {
+    // Basic info (shows in portfolio grid)
+    id: 'swampwhompa-visuals',
+    title: "SwampWhompa - Visual Content",
+    description: "Music videos, visualizers, and animated loops for my EDM solo project",
+    category: "Music Videos & VFX",
+    year: "2022 - Present",
+    tags: ["Blender", "Music Video", "VFX", "3D"],
+    image: whompafloat,
+    
+    // Detail page data (shows on project detail page)
+    detailPage: {
+      category: "Music Videos & VFX",
+      year: "2022 - Present",
+      tags: ["Blender", "Music Video", "VFX", "3D"],
+      videoId: "QTqNOE2DTss", // Main YouTube video
+      videoAspect: "16/9",
+      purchaseLink: null,
+      additionalVideos: [
+        { id: "EFXLepdz8Iw", title: "Additional Music Video" }
+      ],
+      
+      loopingVideos: [
+        { src: DesignThumb, title: "Design Visual Loop" },
+        { src: MusicThumb, title: "Music Visual Loop" }
+      ],
+      
+      overview: "Since its creation, my EDM solo project SwampWhompa and my penchant for 3D visuals and whimsical animation have been joined at the hip. I've directed and animated every music video, programmed every visualizer and designed every loop for my live performances from the ground up. I've used SwampWhompa as a testing ground not only for my sonic vocabulary, but also my visual and aesthetic sense, which I hope to bring to many other projects in the years to come.",
+      
+      technical: [
+        {
+          heading: "3D Character Animation",
+          content: "Created and animated Harold, the SwampWhompa mascot, using Blender's rigging and animation tools. The character serves as a visual anchor across all music videos and promotional materials, providing consistency and brand recognition."
+        },
+        {
+          heading: "Audio-Visual Programming",
+          content: "Developed custom visualizers and reactive animations that respond to audio input in real-time. These systems create dynamic, synchronized visuals for live performances that adapt to the energy and structure of each track."
+        }
+      ],
+      
+      features: [
+        "Original 3D character design and animation",
+        "Custom audio-reactive visual systems",
+        "Complete music video production pipeline",
+        "Live performance visual programming",
+        "Cohesive visual brand identity",
+        "Cross-platform video optimization"
+      ]
+    }
+  }
+,
   {
     // Basic info (shows in portfolio grid)
     id: '404-delay',  // Unique identifier, used in URLs
@@ -114,97 +153,4 @@ export const projects = [
       ]
     }
   }
-
-  ,
-  {
-    id: 'heavy-seas-ad',
-    title: "Heavy Seas Beer Ad",
-    description: "Character animation and VFX for Maryland craft beer brand",
-    category: "Animation & VFX",
-    year: "2025",
-    tags: ["Blender", "Character Animation", "VFX", "3D"],
-    image: beerAdThumb,
-    
-    detailPage: {
-      videoId: "UJbIbekHHFw",
-      category: "Animation & VFX",
-      year: "2025",
-      tags: ["Blender", "Character Animation", "VFX", "3D"],
-      purchaseLink: null,  // No purchase link for client work
-      btsImages: [heavySeasBTS1, heavySeasBTS2, heavySeasBTS3, heavySeasBTS4],
-      
-      overview: "Over the summer of 2025, I landed one of the coolest freelance projects of my career: creating an ad and social campaign for local craft beer titan Heavy Seas Beer. Their nautical, sea-faring aesthetic is quintessentially Maryland, and I knew I had to lean into it hard. The result is a short animation where I threw every trick in the book at it—volumetric lighting, character rigging, rope physics, smoke and spark simulations. The skeleton character, inspired by their iconic Loose Cannon bottle art, really jumps off the screen. Heavy Seas loved it, and I hope you do too.",
-      
-      technical: [
-        {
-          heading: "Character Rigging & Animation",
-          content: "The skeleton character was rigged with a full IK/FK bone structure, allowing for dynamic poses and natural movement. Careful weight painting ensured smooth deformation during animation, while maintaining the stylized, cartoony aesthetic that matches Heavy Seas' brand identity."
-        },
-        {
-          heading: "Volumetric Lighting & Atmosphere",
-          content: "Volumetric lighting creates the moody, dramatic atmosphere throughout the piece. Light scattering through the fog and smoke adds depth and draws attention to the hero product shots, while maintaining the nautical, mysterious vibe."
-        },
-        {
-          heading: "Physics Simulations",
-          content: "Multiple simulation systems were layered together: rope physics for realistic rigging movement, particle systems for smoke and sparks, and rigid body dynamics for interactive elements. Each simulation was carefully art-directed to maintain visual appeal while staying physically plausible."
-        }
-      ],
-      
-      features: [
-        "Full character rigging and animation",
-        "Volumetric lighting and atmosphere",
-        "Rope physics simulation",
-        "Smoke and spark particle systems",
-        "Product-focused cinematography",
-        "Brand-aligned art direction"
-      ]
-    }
-  }
-
-    ,
-  {
-    id: 'tsao-product-viz',
-    title: "Tsao Dive Watch - Product Visualization",
-    description: "3D product rendering and camera animation for luxury dive watch",
-    category: "3D Product Visualization",
-    year: "2024", // Update year if different
-    tags: ["3D Rendering", "Product Viz", "Blender", "Animation"],
-    image: tsaoThumb,
-    
-    detailPage: {
-      category: "Animation & VFX",
-      year: "2025",
-      tags: ["Blender", "Product Viz", "Animation", "3D Rendering"],
-      videoId: null, // No YouTube video
-      purchaseLink: null,
-      productGif: tsaoGif,
-      
-      overview: "A detailed 3D product visualization showcasing the Tsao dive watch through smooth camera movements and photorealistic rendering. Created with the brand's blessing to demonstrate high-end product visualization capabilities, focusing on material accuracy, lighting, and cinematic presentation.",
-      
-      technical: [
-        {
-          heading: "3D Modeling & Materials",
-          content: "High-fidelity watch model built with attention to mechanical detail and material accuracy. PBR shading workflow ensures realistic metal, glass, and rubber surfaces that respond naturally to lighting. Subsurface scattering on the watch face and precise normal mapping on the metal surfaces create depth and authenticity."
-        },
-        {
-          heading: "Camera Animation & Composition",
-          content: "Smooth camera paths designed to highlight key product features while maintaining visual interest. Shallow depth of field draws focus to specific details, while careful framing creates a luxury product aesthetic. Camera movements are timed to the product's form, creating a natural reveal that feels intentional rather than mechanical."
-        },
-        {
-          heading: "Lighting & Rendering",
-          content: "Studio-style three-point lighting setup enhanced with HDR environment maps for realistic reflections. Subtle rim lighting separates the watch from the background while maintaining the premium feel. Rendered with path tracing for physically accurate light behavior and shadow softness."
-        }
-      ],
-      
-      features: [
-        "Photorealistic PBR materials and textures",
-        "Cinematic camera animation",
-        "Studio lighting setup with HDR reflections",
-        "High-resolution rendering for print and web",
-        "Attention to mechanical watch details"
-      ]
-    }
-  }
-
 ];
-

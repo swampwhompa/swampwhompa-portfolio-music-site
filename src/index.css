@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Akira Expanded';
+    src: url('./fonts/Akira Expanded Demo.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -157,8 +164,30 @@ body, html {
 
 .animate-fadeIn {
     animation: fadeIn 0.8s ease-out both;
+}
 
-    
+@keyframes swoopDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95) rotate(-1deg);
+    }
+    25% {
+        transform: translateY(-15px) scale(0.98) rotate(0.5deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(5px) scale(1.02) rotate(-0.3deg);
+    }
+    75% {
+        transform: translateY(2px) scale(1.01) rotate(0.1deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
 
+.animate-swoop-delayed {
+    animation: swoopDown 0.6s ease-out 1s both;
 }
 

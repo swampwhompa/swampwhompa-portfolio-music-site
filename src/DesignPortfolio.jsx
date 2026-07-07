@@ -53,6 +53,24 @@ function DesignPortfolio() {
       {/* Before/After slider */}
       <BeforeAfterSlider beforeSrc={WebsiteBefore} afterSrc={WebsiteAfter} />
 
+      {/* Copy block */}
+      <div className="max-w-4xl mx-auto mb-16 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
+        <div className="glass-button p-8">
+          <p className="font-sans text-lg text-white/90 leading-relaxed mb-4">
+            When you look at the biggest festival stages, the headliners at the most prominent clubs - what do they all have in common? They refuse to settle for anything but the most engaging and entertaining live show possible. In an era where live entertainment acts have to compete for crowds and dwindling attention spans, it's hard to blame them.
+          </p>
+          <p className="font-sans text-lg text-white/90 leading-relaxed mb-4">
+            Visuals are a MASSIVE part of the equation. Of all of the headlining acts I've seen in the last 2 years, practically all of them had animated, sequenced or 3D visuals. A few moving lights and a cool logo are simply not enough for the main stage any more.
+          </p>
+          <p className="font-sans text-lg text-white/90 leading-relaxed mb-4">
+            Are you ready to show up the competition?
+          </p>
+          <p className="font-sans text-lg text-white/90 leading-relaxed">
+            Read one of my case studies below, then drop me a line in the contact form at the bottom of the page to see how your act can light up the stage too!
+          </p>
+        </div>
+      </div>
+
             {/* Project carousel */}
       <div className="max-w-6xl mx-auto mb-16">
         <div className="relative">

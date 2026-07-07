@@ -63,7 +63,7 @@ function DesignPortfolio() {
             Visuals are a MASSIVE part of the equation. Of all of the headlining acts I've seen in the last 2 years, practically all of them had animated, sequenced or 3D visuals. A few moving lights and a cool logo are simply not enough for the main stage any more.
           </p>
           <p className="font-sans text-lg text-white/90 leading-relaxed mb-4">
-            Are you ready to show up the competition?
+            Are you ready to captivate your audience and elevate your live show?
           </p>
           <p className="font-sans text-lg text-white/90 leading-relaxed">
             Read one of my case studies below, then drop me a line in the contact form at the bottom of the page to see how your act can light up the stage too!
